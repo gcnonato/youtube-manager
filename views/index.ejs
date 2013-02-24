@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/css/style.css' />
+	</head>
+	<body>
+		<h1><{{ title }}></h1>
+		<p>Welcome to <{{ title }}></p>
+
+		<script type='text/template' id='job_template'>
+			<%= url %>
+			<%= status %>
+		</script>
+
+		<script src='jslib/underscore-min.js'></script>
+		<script src='jslib/jquery-1.9.1.min.js'></script>
+		<script src='jslib/backbone-min.js'></script>
+
+		<script src='js/main.js'></script>
+	</body>
+</html>

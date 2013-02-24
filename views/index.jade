@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+	script(type='text/template', id='job_template') <%= url %> <%= status %>
+
+	div(id='newjob')
+		form(id='addJobForm', action='#')
+			label(for='url') Url:
+			input(id='url')
+			br
+			label(for='status') Status:
+			input(id='status')
+			br
+			button(id='add') Add
+	div(id='jobs')
