@@ -68,7 +68,7 @@ var JobsView = Backbone.View.extend({
 	},
 
 	events: {
-		'click #add': 'addJob'
+		'click #addButton': 'addJob'
 	}
 });
 
