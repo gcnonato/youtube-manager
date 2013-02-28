@@ -3,7 +3,7 @@ extends layout
 block content
 	h1= title
 	p Welcome to #{title}
-	script(type='text/template', id='job_template') <%= url %> <%= status %>
+	script(type='text/template', id='job_template') <td><%= url %></td><td><%= status %></td>
 
 	div(id='jobs')
 		div(id='newjob')
@@ -15,3 +15,8 @@ block content
 				input(id='status')
 				br
 				button(id='addButton') Add
+			table
+				thead
+					td Url
+					td Status
+				tbody(id='jobdata')

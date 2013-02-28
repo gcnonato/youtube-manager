@@ -1,3 +1,4 @@
+$(function() {
 var Job = Backbone.Model.extend({
 	defaults: {
 		url: '',
@@ -12,7 +13,7 @@ var Jobs = Backbone.Collection.extend({
 });
 
 var JobView = Backbone.View.extend({
-	tagName: 'li',
+	tagName: 'tr',
 
 	jobTpl: _.template($('#job_template').html()),
 	//jobTpl: _.template('<%= url %>'),
@@ -28,7 +29,7 @@ var JobView = Backbone.View.extend({
 });
 
 var JobsView = Backbone.View.extend({
-	el:$('#jobs'),
+	el:$('#jobdata'),
 
 	initialize: function() {
 		this.collection = new Jobs(jobs);
@@ -58,9 +59,7 @@ var JobsView = Backbone.View.extend({
 		var formData = {};
 		
 		$('#addJobForm').children('input').each(function(i, el){
-			formData[el.id] = $(el).val();
-		});
-
+			formData[el.id] = $(el).val(); }); 
 		jobs.push(formData);
 
 		//this.collection.add(new Job(formData));
@@ -85,3 +84,37 @@ $('#jobs').html(jobView.render().el);
 
 var jobsView = new JobsView();
 
+//routers
+var ClientRouter = Backbone.Router.extend({
+	routes: {
+		"test": "testFn",
+		"test2": "testFn2"
+	}/*,
+
+	testFn: function() {
+		alert('test fn inbuilt');
+	},
+
+	testFn2: function() {
+		alert('test fn 2 inbuilt');
+	}*/
+});
+
+
+var TestView = Backbone.View.extend({
+	initialize: function(options) {
+		options.router.on('route:testFn', function() {
+			alert('testfunction');
+		});
+		options.router.on('route:testFn2', function() {
+			alert('testfunction2');
+		});
+	}
+});
+
+var testView = new TestView({router: ClientRouter});
+
+var clientRouter = new ClientRouter();
+Backbone.history.start();
+
+});
